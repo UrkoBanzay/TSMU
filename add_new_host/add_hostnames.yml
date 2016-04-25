@@ -1,0 +1,8 @@
+- hosts: NEW_HOSTS
+  sudo: yes
+  tasks:
+  - name: add hostname to /etc/hostname
+    hostname: name={{hostname}}.tdmu.local
+  - name: add /etc/hosts
+    lineinfile: dest=/etc/hosts  line="10.1.1.{{serverip}}      {{hostname}}.tdmu.local       {{hostname}}" state=present
+

@@ -1,0 +1,8 @@
+---
+- hosts: config.tdmu.local
+  sudo: yes
+  tasks:
+  - name: delete host from ansible
+    replace: dest=/etc/ansible/hosts regexp="hostname"
+
+

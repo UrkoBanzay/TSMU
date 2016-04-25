@@ -1,0 +1,7 @@
+- hosts: "{{hostname}}"
+  sudo: yes
+  tasks:
+ # update apt cache
+  - apt: update_cache=yes upgrade=yes cache_valid_time=3600
+    register: aptget
+  - debug: var=aptget

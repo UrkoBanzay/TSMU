@@ -1,0 +1,8 @@
+---
+- hosts: NEW_HOSTS
+  sudo: True
+ # remote_user: root
+  
+  tasks:
+ #  - shell: touch ~/123123123
+   - authorized_key: user=root key="{{ lookup('file', '/root/.ssh/id_rsa.pub') }}"

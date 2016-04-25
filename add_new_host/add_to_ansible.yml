@@ -1,0 +1,8 @@
+---
+- hosts: config.tdmu.local
+  sudo: yes
+  tasks:
+  - name: add host to ansible
+    lineinfile: dest=/etc/ansible/hosts state=present regexp="newhosts"  insertafter="newhosts" line="[newhosts]\n{{hostname.tdmu.local}}" 
+
+

@@ -1,0 +1,14 @@
+--
+- hosts: gateway.tdmu.local
+  sudo: yes
+#  vars:
+#  - hostname: test123
+#  - serverip: 99
+  tasks:
+  - name: delete from zones
+    lineinfile: dest=/etc/bind/zones/db.tdmu.local  regexp="{{hostname}}          IN      A   $ replace=''
+  - name: delete from reverse zones
+    lineinfile: dest=/etc/bind/zones/db.10  regexp="{{serverip}}  IN      PTR     {{hostname}}$  replace=''
+  - name: restart dns
+    service: name=bind9 state=restarted
+
